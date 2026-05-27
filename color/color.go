@@ -1,13 +1,7 @@
 package color
 
 import (
-	"bytes"
-	"fmt"
 	"io"
-	"os"
-
-	"github.com/mattn/go-colorable"
-	"github.com/mattn/go-isatty"
 )
 
 type (
@@ -102,24 +96,9 @@ var (
 	global = New()
 )
 
-func outer(n string) inner {
-	return func(msg interface{}, styles []string, c *Color) string {
-		// TODO: Drop fmt to boost performance?
-		if c.disabled {
-			return fmt.Sprintf("%v", msg)
-		}
+func outer(n string) inner { _ = "STUB: not implemented"; return *new(inner) }
 
-		b := new(bytes.Buffer)
-		b.WriteString("\x1b[")
-		b.WriteString(n)
-		for _, s := range styles {
-			b.WriteString(";")
-			b.WriteString(s)
-		}
-		b.WriteString("m")
-		return fmt.Sprintf("%s%v\x1b[0m", b.String(), msg)
-	}
-}
+// TODO: Drop fmt to boost performance?
 
 type (
 	Color struct {
@@ -129,279 +108,234 @@ type (
 )
 
 // New creates a Color instance.
-func New() (c *Color) {
-	c = new(Color)
-	c.SetOutput(colorable.NewColorableStdout())
-	return
-}
+func New() (c *Color) { _ = "STUB: not implemented"; return nil }
 
 // Output returns the output.
 func (c *Color) Output() io.Writer {
-	return c.output
+	_ = "STUB: not implemented"
+
+	// SetOutput sets the output.
+	return *new(io.Writer)
 }
 
-// SetOutput sets the output.
-func (c *Color) SetOutput(w io.Writer) {
-	c.output = w
-	if w, ok := w.(*os.File); !ok || !isatty.IsTerminal(w.Fd()) {
-		c.disabled = true
-	}
-}
+func (c *Color) SetOutput(w io.Writer) { _ = "STUB: not implemented"; return }
 
 // Disable disables the colors and styles.
 func (c *Color) Disable() {
-	c.disabled = true
+	_ = "STUB: not implemented"
+
+	// Enable enables the colors and styles.
+	return
 }
 
-// Enable enables the colors and styles.
 func (c *Color) Enable() {
-	c.disabled = false
+	_ = "STUB: not implemented"
+
+	// Print is analogous to `fmt.Print` with termial detection.
+	return
 }
 
-// Print is analogous to `fmt.Print` with termial detection.
-func (c *Color) Print(args ...interface{}) {
-	fmt.Fprint(c.output, args...)
-}
+func (c *Color) Print(args ...interface{}) { _ = "STUB: not implemented"; return }
 
 // Println is analogous to `fmt.Println` with termial detection.
-func (c *Color) Println(args ...interface{}) {
-	fmt.Fprintln(c.output, args...)
-}
+func (c *Color) Println(args ...interface{}) { _ = "STUB: not implemented"; return }
 
 // Printf is analogous to `fmt.Printf` with termial detection.
-func (c *Color) Printf(format string, args ...interface{}) {
-	fmt.Fprintf(c.output, format, args...)
-}
+func (c *Color) Printf(format string, args ...interface{}) { _ = "STUB: not implemented"; return }
 
 func (c *Color) Black(msg interface{}, styles ...string) string {
-	return black(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (c *Color) Red(msg interface{}, styles ...string) string {
-	return red(msg, styles, c)
-}
+func (c *Color) Red(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
 func (c *Color) Green(msg interface{}, styles ...string) string {
-	return green(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) Yellow(msg interface{}, styles ...string) string {
-	return yellow(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) Blue(msg interface{}, styles ...string) string {
-	return blue(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) Magenta(msg interface{}, styles ...string) string {
-	return magenta(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) Cyan(msg interface{}, styles ...string) string {
-	return cyan(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) White(msg interface{}, styles ...string) string {
-	return white(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) Grey(msg interface{}, styles ...string) string {
-	return grey(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) BlackBg(msg interface{}, styles ...string) string {
-	return blackBg(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) RedBg(msg interface{}, styles ...string) string {
-	return redBg(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) GreenBg(msg interface{}, styles ...string) string {
-	return greenBg(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) YellowBg(msg interface{}, styles ...string) string {
-	return yellowBg(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) BlueBg(msg interface{}, styles ...string) string {
-	return blueBg(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) MagentaBg(msg interface{}, styles ...string) string {
-	return magentaBg(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) CyanBg(msg interface{}, styles ...string) string {
-	return cyanBg(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) WhiteBg(msg interface{}, styles ...string) string {
-	return whiteBg(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) Reset(msg interface{}, styles ...string) string {
-	return reset(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) Bold(msg interface{}, styles ...string) string {
-	return bold(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
-func (c *Color) Dim(msg interface{}, styles ...string) string {
-	return dim(msg, styles, c)
-}
+func (c *Color) Dim(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
 func (c *Color) Italic(msg interface{}, styles ...string) string {
-	return italic(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) Underline(msg interface{}, styles ...string) string {
-	return underline(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) Inverse(msg interface{}, styles ...string) string {
-	return inverse(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) Hidden(msg interface{}, styles ...string) string {
-	return hidden(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 func (c *Color) Strikeout(msg interface{}, styles ...string) string {
-	return strikeout(msg, styles, c)
+	_ = "STUB: not implemented"
+	return ""
 }
 
 // Output returns the output.
 func Output() io.Writer {
-	return global.output
+	_ = "STUB: not implemented"
+	return *
+
+	// SetOutput sets the output.
+	new(io.Writer)
 }
 
-// SetOutput sets the output.
-func SetOutput(w io.Writer) {
-	global.SetOutput(w)
-}
+func SetOutput(w io.Writer) { _ = "STUB: not implemented"; return }
 
-func Disable() {
-	global.Disable()
-}
+func Disable() { _ = "STUB: not implemented"; return }
 
 func Enable() {
-	global.Enable()
+	_ = "STUB: not implemented"
+
+	// Print is analogous to `fmt.Print` with termial detection.
+	return
 }
 
-// Print is analogous to `fmt.Print` with termial detection.
-func Print(args ...interface{}) {
-	global.Print(args...)
-}
+func Print(args ...interface{}) { _ = "STUB: not implemented"; return }
 
 // Println is analogous to `fmt.Println` with termial detection.
-func Println(args ...interface{}) {
-	global.Println(args...)
-}
+func Println(args ...interface{}) { _ = "STUB: not implemented"; return }
 
 // Printf is analogous to `fmt.Printf` with termial detection.
-func Printf(format string, args ...interface{}) {
-	global.Printf(format, args...)
-}
+func Printf(format string, args ...interface{}) { _ = "STUB: not implemented"; return }
 
-func Black(msg interface{}, styles ...string) string {
-	return global.Black(msg, styles...)
-}
+func Black(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func Red(msg interface{}, styles ...string) string {
-	return global.Red(msg, styles...)
-}
+func Red(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func Green(msg interface{}, styles ...string) string {
-	return global.Green(msg, styles...)
-}
+func Green(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func Yellow(msg interface{}, styles ...string) string {
-	return global.Yellow(msg, styles...)
-}
+func Yellow(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func Blue(msg interface{}, styles ...string) string {
-	return global.Blue(msg, styles...)
-}
+func Blue(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func Magenta(msg interface{}, styles ...string) string {
-	return global.Magenta(msg, styles...)
-}
+func Magenta(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func Cyan(msg interface{}, styles ...string) string {
-	return global.Cyan(msg, styles...)
-}
+func Cyan(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func White(msg interface{}, styles ...string) string {
-	return global.White(msg, styles...)
-}
+func White(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func Grey(msg interface{}, styles ...string) string {
-	return global.Grey(msg, styles...)
-}
+func Grey(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func BlackBg(msg interface{}, styles ...string) string {
-	return global.BlackBg(msg, styles...)
-}
+func BlackBg(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func RedBg(msg interface{}, styles ...string) string {
-	return global.RedBg(msg, styles...)
-}
+func RedBg(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func GreenBg(msg interface{}, styles ...string) string {
-	return global.GreenBg(msg, styles...)
-}
+func GreenBg(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func YellowBg(msg interface{}, styles ...string) string {
-	return global.YellowBg(msg, styles...)
-}
+func YellowBg(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func BlueBg(msg interface{}, styles ...string) string {
-	return global.BlueBg(msg, styles...)
-}
+func BlueBg(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func MagentaBg(msg interface{}, styles ...string) string {
-	return global.MagentaBg(msg, styles...)
-}
+func MagentaBg(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func CyanBg(msg interface{}, styles ...string) string {
-	return global.CyanBg(msg, styles...)
-}
+func CyanBg(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func WhiteBg(msg interface{}, styles ...string) string {
-	return global.WhiteBg(msg, styles...)
-}
+func WhiteBg(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func Reset(msg interface{}, styles ...string) string {
-	return global.Reset(msg, styles...)
-}
+func Reset(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func Bold(msg interface{}, styles ...string) string {
-	return global.Bold(msg, styles...)
-}
+func Bold(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func Dim(msg interface{}, styles ...string) string {
-	return global.Dim(msg, styles...)
-}
+func Dim(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func Italic(msg interface{}, styles ...string) string {
-	return global.Italic(msg, styles...)
-}
+func Italic(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func Underline(msg interface{}, styles ...string) string {
-	return global.Underline(msg, styles...)
-}
+func Underline(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func Inverse(msg interface{}, styles ...string) string {
-	return global.Inverse(msg, styles...)
-}
+func Inverse(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func Hidden(msg interface{}, styles ...string) string {
-	return global.Hidden(msg, styles...)
-}
+func Hidden(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }
 
-func Strikeout(msg interface{}, styles ...string) string {
-	return global.Strikeout(msg, styles...)
-}
+func Strikeout(msg interface{}, styles ...string) string { _ = "STUB: not implemented"; return "" }

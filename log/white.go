@@ -1,12 +1,10 @@
+//go:build appengine
 // +build appengine
 
 package log
 
 import (
 	"io"
-	"os"
 )
 
-func output() io.Writer {
-	return os.Stdout
-}
+func output() io.Writer { _ = "STUB: not implemented"; return *new(io.Writer) }

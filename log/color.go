@@ -1,13 +1,10 @@
+//go:build !appengine
 // +build !appengine
 
 package log
 
 import (
 	"io"
-
-	"github.com/mattn/go-colorable"
 )
 
-func output() io.Writer {
-	return colorable.NewColorableStdout()
-}
+func output() io.Writer { _ = "STUB: not implemented"; return *new(io.Writer) }
